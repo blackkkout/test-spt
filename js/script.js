@@ -22,6 +22,8 @@ const massange = [
   },
 ];
 
+let results = [];
+
 var mass_id = 0;
 var length_mass = 0;
 var lengt_num_mas = 0;
@@ -96,13 +98,14 @@ const set = setTimeout(() => {
             .offsetTop;
           scriplongBody(nev_div);
         }
-      } else if (
-        lengt_num_mas === 21
-      ) {
+      } else if (lengt_num_mas === 21) {
         scrollDown();
         clearInterval(mas_inf);
-        $('#mass' + lengt_num_mas + '').parent().parent().css('display', 'none');
-        $('.iframe-form').css('display', 'block');
+        $("#mass" + lengt_num_mas + "")
+          .parent()
+          .parent()
+          .css("display", "none");
+        $(".iframe-form").css("display", "block");
         scrollDown();
         clearInterval(set);
         showForm();
@@ -120,7 +123,6 @@ function app() {
   scrollDown();
 }
 
-
 function myMassange(userGend) {
   let mass =
     '<div class="chat-content-item user "><div class="chat-content-desc"><div class="chat-content-desc-item user"><p>' +
@@ -129,7 +131,6 @@ function myMassange(userGend) {
   $(".chat-content-list").append(mass);
   scrollDown();
 }
-
 
 function appGender() {
   scrollDown();
@@ -143,6 +144,7 @@ function genderNext() {
     document.querySelector(".chat-content-buttons-gender").style.display =
       "none";
     myMassange("Мужчина");
+    results.push(["Гендер", "Мужчина"]);
 
     setTimeout(() => {
       process = true;
@@ -153,6 +155,7 @@ function genderNext() {
     document.querySelector(".chat-content-buttons-gender").style.display =
       "none";
     myMassange("Женщина");
+    results.push(["Гендер", "Женщина"]);
 
     setTimeout(() => {
       process = true;
@@ -160,7 +163,6 @@ function genderNext() {
     scrollDown();
   });
 }
-
 
 function appAge() {
   scrollDown();
@@ -176,13 +178,14 @@ function appAge() {
       let selectS = "" + empty_field + "." + full_month + "." + year + "";
 
       myMassange(selectS);
+      results.push(["Дата рождения", selectS]);
+
       $(this).css("display", "none");
       process = true;
       clearInterval(data);
     }
   }, 500);
 }
-
 
 function YsNo() {
   scrollDown();
@@ -192,17 +195,20 @@ function YsNo() {
   $("#yeas").click(() => {
     $(".chat-content-buttons-gender").css("display", "none");
     myMassange("Да");
+    results.push(["Аллергия", "Да"]);
+
     process = true;
     scrollDown();
   });
   $("#no").click(() => {
     $(".chat-content-buttons-gender").css("display", "none");
     myMassange("Нет");
+    results.push(["Аллергия", "Нет"]);
+
     process = true;
     scrollDown();
   });
 }
-
 
 function Photofoot() {
   $(".chat-content-list").append(
@@ -213,7 +219,6 @@ function Photofoot() {
     process = true;
   }, 8500);
 }
-
 
 function addArray() {
   end_massange1 = {
@@ -276,7 +281,6 @@ function addArray() {
   );
 }
 
-
 let top_scroling = 0;
 
 function scriplongBody(x) {
@@ -308,3 +312,10 @@ function scrollDown() {
     wrap.scrollTop(desiredHeight);
   }
 }
+
+$("#order_form").submit(function (e) {
+  e.preventDefault();
+  results.push(["Имя", $("#input-name").val()]);
+  results.push(["Номер телефона", $("#input-phone").val()]);
+  alert(results.map((value) => `${value[0]}: ${value[1]}`).join("\n"));
+});
