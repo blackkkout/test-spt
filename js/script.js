@@ -326,9 +326,9 @@ $("#order_form").submit(function (e) {
     results.push(["Номер телефона", phone]);
     alert(results.map((value) => `${value[0]}: ${value[1]}`).join("\n"));
   } else {
-    $("#order_form_error").append(
-      '<div class="form-error">Проверьте введенный номер телефона</div>'
-    );
+    $("#order_form_error")
+      .empty()
+      .html('<div class="form-error">Проверьте введенный номер телефона</div>');
   }
 });
 

@@ -3887,6 +3887,7 @@ input[placeholder="Ваше имя"] {
   padding: 10px 20px;
   background-color: red;
   color: white;
+  border-radius: 5px;
 }
 @keyframes pop-up-appear {
   0% {
