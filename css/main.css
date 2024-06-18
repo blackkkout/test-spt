@@ -3883,6 +3883,11 @@ input[placeholder="Ваше имя"] {
   font-size: 0.5em !important;
   font-weight: 400 !important;
 }
+.form-error {
+  padding: 10px 20px;
+  background-color: red;
+  color: white;
+}
 @keyframes pop-up-appear {
   0% {
     transform: translateY(-2000px);

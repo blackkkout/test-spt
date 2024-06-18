@@ -315,7 +315,19 @@ function scrollDown() {
 
 $("#order_form").submit(function (e) {
   e.preventDefault();
-  results.push(["Имя", $("#input-name").val()]);
-  results.push(["Номер телефона", $("#input-phone").val()]);
-  alert(results.map((value) => `${value[0]}: ${value[1]}`).join("\n"));
+
+  const phone = $("#input-phone").val();
+
+  const phoneRegExp = /^\+38\d{10}$/;
+
+  if (phoneRegExp.test(phone)) {
+    $("#order_form_error").text("");
+    results.push(["Имя", $("#input-name").val()]);
+    results.push(["Номер телефона", phone]);
+    alert(results.map((value) => `${value[0]}: ${value[1]}`).join("\n"));
+  } else {
+    $("#order_form_error").append(
+      '<div class="form-error">Проверьте введенный номер телефона</div>'
+    );
+  }
 });
