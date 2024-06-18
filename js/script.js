@@ -331,3 +331,15 @@ $("#order_form").submit(function (e) {
     );
   }
 });
+
+$(".glow-button").click(function () {
+  console.log("click");
+
+  const commentsHidden = $(".comment-item").not(".comment-item-show");
+  if (commentsHidden.length) {
+    commentsHidden.slice(0, 3).addClass("comment-item-show");
+    scrollDown();
+  } else {
+    $(this).hide();
+  }
+});
