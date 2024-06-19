@@ -9,3 +9,4 @@
 - Виправив недолік сайдабура з переносом рядків. ([commit](https://github.com/blackkkout/test-spt/commit/3bc35b62cfdd157d10c75f5170416afd6ac62c15))
 - Додав підгрузку коментарів по кліку кнопки. ([commit](https://github.com/blackkkout/test-spt/commit/3a59ce692913044111531892a891fa48ebc9b52c))
  
+### Затрачено часу - 3 години
